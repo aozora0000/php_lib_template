@@ -17,7 +17,7 @@ Overview
 
 ## Licence
 
-[MIT](https://github.com/<user>/<repos>/blob/master/LICENCE)
+<LICENSE>
 
 ## Author
 
