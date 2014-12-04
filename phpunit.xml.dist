@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<phpunit
+    bootstrap="tests/phpunit.bootstrap.php"
+    processIsolation="false"
+    verbose="true"
+    strict="false"
+    colors="true">
+    <testsuites>
+        <testsuite name="PHPUnit">
+            <!-- テストケースがあるディレクトリを列挙する -->
+            <directory>tests/*</directory>
+        </testsuite>
+    </testsuites>
+
+    <logging>
+        <!-- コードカバレッジ率 -->
+        <log type="coverage-text" target="php://stdout" lowUpperBound="35" highLowerBound="70" />
+    </logging>
+
+    <filter>
+        <!-- コードカバレッジ率を計測する対象の指定 -->
+        <whitelist>
+            <directory suffix=".php">./test</directory>
+        </whitelist>
+        <!-- コードカバレッジ測定対象から除外 -->
+        <blacklist>
+            <directory suffix=".php" group="PHPUNIT">vendor</directory>
+        </blacklist>
+    </filter>
+</phpunit>
