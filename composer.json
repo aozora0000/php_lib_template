@@ -6,6 +6,6 @@
         "phpunit/phpunit": "4.*"
     },
     "src" : {
-        
+
     }
 }
