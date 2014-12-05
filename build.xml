@@ -1,0 +1,44 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<project name="test_project" basedir="." default="all">
+    <property file="build.properties" />
+
+    <target name="phpcpd">
+        <phpcpd minTokens="10">
+            <fileset dir="${targetDir}">
+                <include name="**/**/*.php"/>
+            </fileset>
+        </phpcpd>
+    </target>
+
+    <target name="phpmd">
+        <phpmd rulesets="ruleset.xml">
+            <fileset dir="${targetDir}">
+                <exclude name="exclude.php"/>
+            </fileset>
+        </phpmd>
+    </target>
+
+    <!-- <target name="phpcs" description="Generate phpcs.xml using PHP_CodeSniffer" >
+        <phpcodesniffer standard="${phpfig}" file="${targetDir}" allowedFileExtensions="php" />
+    </target> -->
+
+    <target name="phpunit">
+        <exec command="vendor/bin/phpunit" logoutput="true" />
+        <!-- <exec command="vendor/bin/phpunit -c phpunit.xml" /> -->
+    </target>
+
+    <target name="php-cs-fixer" description="PHP Codings Standards fixer">
+        <exec
+            passthru="${passthru}"
+            command="php-cs-fixer --verbose fix ${targetDir}/ --level=${phpfig}" />
+    </target>
+
+    <target name="phpdoc">
+        <delete dir="${docsDir}" includeemptydirs="true" />
+        <mkdir dir="${docsDir}" />
+        <exec dir="." command="phpdoc -d ${targetDir} -t ${docsDir} --encoding=utf8/"/>
+    </target>
+
+    <target name="all" depends="phpcpd,phpmd,php-cs-fixer,phpunit">
+    </target>
+</project>

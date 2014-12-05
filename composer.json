@@ -3,9 +3,16 @@
 
     },
     "require-dev" : {
-        "phpunit/phpunit": "4.*"
+        "phing/phing": "*",
+        "phpunit/phpunit": "*",
+        "phpmd/phpmd": "*",
+        "sebastian/phpcpd": "*",
+        "phpdocumentor/phpdocumentor": "*",
+        "squizlabs/php_codesniffer": "*"
     },
-    "src" : {
-
+    "autoload": {
+        "psr-0": {
+            "Scalar": "src/"
+        }
     }
 }

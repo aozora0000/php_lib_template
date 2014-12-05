@@ -1,2 +1,4 @@
 vendor
+doc/*
+!doc/.gitkeep
 composer.lock
